@@ -1,5 +1,3 @@
-# tipos basicos com exemplos.
-
 # boolean
 print(True)
 print(False)
