@@ -1,3 +1,7 @@
+"""
+Exemplos de números em Python3.
+"""
+
 print(dir(int))
 print(dir(float))
 
