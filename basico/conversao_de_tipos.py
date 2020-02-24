@@ -1,5 +1,5 @@
 """
-Exemplos de conversao de tipos em Python3.
+Exemplos de conversão de tipos em Python3.
 """
 
 a = 2
