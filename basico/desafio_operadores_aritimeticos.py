@@ -1,6 +1,6 @@
 """
 Dado um valor de salario e um valor de despesas. Calcule o percentual
-de despesas em relacao o salario
+de despesas em relacao o salario.
 """
 
 salario = 3450.45

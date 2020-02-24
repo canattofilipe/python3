@@ -1,3 +1,7 @@
+"""
+Tipos básicos em Python3.
+"""
+
 # boolean
 print(True)
 print(False)
@@ -14,8 +18,8 @@ print('voce é ' + 3 * 'muito '+'legal!')
 print([10, 20, 30])
 
 # dicionario
-my_dcit = {'nome': 'lipe', 'idade': 26, 'profissao': 'programador'}
-print(my_dcit['nome'])
+dic = {'nome': 'lipe', 'idade': 26, 'profissao': 'programador'}
+print(dic)
 
 # null
 print(None)

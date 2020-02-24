@@ -1,3 +1,7 @@
+"""
+Operadores aritiméticos em Python3.
+"""
+
 print(2 + 3)
 print(4 - 7)
 print(2 * 5.3)
