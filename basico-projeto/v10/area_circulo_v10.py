@@ -17,7 +17,7 @@ if __name__ == '__main__':
     if len(sys.argv) < 2:
         print("""\
 É necessário informar o raio do círculo.
-Sintaxe: """, sys.argv[0], '<raio>')
+Sintaxe: {} <raio>""".format(sys.argv[0][2:]))
     else:
         print(sys.argv[0])  # uri do script.
         print(sys.argv[1])  # uri do script.
