@@ -11,6 +11,7 @@ if __name__ == '__main__':
         intersecao = PALAVRAS_PROIBIDAS.intersection(
             set(texto.lower().split()))
         if intersecao:
-            print(f'Texto possui {len(intersecao)} palavras repetidas', intersecao)
+            print(
+                f'Texto possui {len(intersecao)} palavras repetidas', intersecao)
         else:
             print('Texto autorizado:', texto)
