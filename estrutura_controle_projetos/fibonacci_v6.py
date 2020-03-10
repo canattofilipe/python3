@@ -5,13 +5,14 @@
 
 def fibonacci(quantidade):
     resultado = [0, 1]
-    while True:
+
+    # "_" significa uma variavel nao utilizada, se fosse colocado outras como "i" ou "k" por exemplo o compilador apontaria um warning.
+    for _ in range(2, quantidade+1):
         resultado.append(sum(resultado[-2:]))
-        if len(resultado) == quantidade:
-            break
+
     return resultado
 
 
 if __name__ == "__main__":
     # lista os 21 primeiros da sequencia.
-    print(fibonacci(21))
+    print(fibonacci(5))
