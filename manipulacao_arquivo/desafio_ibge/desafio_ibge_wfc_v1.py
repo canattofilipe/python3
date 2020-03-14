@@ -13,5 +13,5 @@ with open('desafio-ibge.csv', encoding='ISO-8859-1') as file:
         if counter == 0:
             pass
         else:
-            print('{} , {}'.format(line[3], line[8]))
+            print('{} , {}'.format(line[8], line[3]))
         counter += 1
