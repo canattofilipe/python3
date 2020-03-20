@@ -1,22 +1,16 @@
 #!/usr/bin/python3
 
 '''
-Desafio html versao Wilton Filipe Canatto.
+Desafio html versao Leonardo Leitao (instrutor).
 '''
 
 
-palavras_reservadas = ('class')
-
-
-def filtro_palavras_reservadas(palavra):
-    return palavra.split('_')[-1]
-
-
 def tag(tag, *args, **kwargs):
-    miolo = ''.join(f' {conteudo}' for conteudo in args)
-    params = ''.join(
-        f'{filtro_palavras_reservadas(k)}="{v}"' for k, v in kwargs.items())
-    return ''.join(f'<{tag} {params}> {miolo} </{tag}>')
+    if 'html_class' in kwargs:
+        kwargs['class'] = kwargs.pop('html_class')
+    attrs = ''.join(f'{k}="{v}"' for k, v in kwargs.items())
+    inner = ''.join(args)
+    return f'<{tag} {attrs}> {inner} </{tag}>'
 
 
 if __name__ == '__main__':
