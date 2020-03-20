@@ -1,8 +1,17 @@
 #!/usr/bin/python3
 
+palavras_reservadas = ('class')
+
+
+def filtro_palavras_reservadas(palavra):
+    return palavra.split('_')[-1]
+
 
 def tag(tag, *args, **kwargs):
-    pass
+    miolo = ''.join(f' {conteudo}' for conteudo in args)
+    params = ''.join(
+        f'{filtro_palavras_reservadas(k)}="{v}"' for k, v in kwargs.items())
+    return ''.join(f'<{tag} {params}> {miolo} </{tag}>')
 
 
 if __name__ == '__main__':
