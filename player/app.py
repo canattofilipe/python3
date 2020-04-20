@@ -18,4 +18,6 @@ def load():
 
 if __name__ == '__main__':
     m = load()
-    print(m[9][2])
+    for line in m:
+        if line[0] == '2020-02-21 14:27:31,610':
+            print('achei')
