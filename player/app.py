@@ -4,6 +4,7 @@ import numpy as np
 DELIMITER = ';'
 
 i = {}
+sensors = {}
 begin = None
 end = None
 axys_x_len = 0
@@ -43,31 +44,41 @@ def new(m):
 
 
 def get_higher_value(m):
-    v = float(m[0][2])
+    v = {'value': float(m[0][2]), 'sensor_index': 2}
     for i in m:
-        for j in i[2:]:
-            aux = float(j)
-            v = aux if aux > v else v
+        for idx, j in enumerate(i[2:], start=2):
+            aux = {'value': float(j), 'sensor_index': idx}
+            v = aux if aux['value'] > v['value'] else v
     return v
 
 
 def get_min_value(m):
     v = float(m[0][2])
     for i in m:
-        for j in i[2:]:
+        for j in i[2:axys_x_len-4]:
             aux = float(j)
             v = aux if aux < v else v
     return v
 
 
+def get_sensors_hash(m):
+    for i in m:
+        if i[0] == 'Scan Sweep Time (Sec)':
+            for idx, j in enumerate(i[2:axys_x_len-4], start=2):
+                sensors[idx] = j
+
+
 if __name__ == '__main__':
     m = load()
     axys_x_len = len(m[0])
-    begin = i['2020-02-21 13:42:31,648']
-    end = i['2020-02-21 14:03:31,643']
+    begin = i['2020-02-21 13:40:31,610']
+    end = i['2020-02-21 13:40:31,610']
     from_string_to_float(m)
     # for i in (range(begin, end+1)):
     #    print(m[i])
     new_m = new(m)
     print(get_higher_value(new_m))
     print(get_min_value(new_m))
+    get_sensors_hash(m)
+    print(sensors)
+    print(sensors[9])
