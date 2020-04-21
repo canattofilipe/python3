@@ -44,9 +44,34 @@ def load_labels(m):
                 CONFIG['labels'][j] = k
 
 
+def find_hotter_point(m):
+    begin = FIRST_COLUMN_MAP[CONFIG['start_datetime']]
+    end = FIRST_COLUMN_MAP[CONFIG['end_datetime']]
+    axys_x_len = CONFIG['axys_x_len']
+
+    v = float(m[begin][2].replace(',', '.'))
+    tag = {'l': 0, 'c': 0}
+
+    for il, l in enumerate(m[begin:end+1], start=begin):
+        for ic, c in enumerate(l[2:axys_x_len-4], start=2):
+            aux = float(c.replace(',', '.'))
+            if aux >= v:
+                v = aux
+                tag['l'] = il
+                tag['c'] = ic
+    return tag
+
+
 if __name__ == '__main__':
     CONFIG['start_datetime'] = '2020-02-21 13:41:31,610'
-    CONFIG['end_datetime'] = '2020-02-21 13:59:31,610'
+    CONFIG['end_datetime'] = '2020-02-21 13:49:31,663'
     m = load()
 
     check(m)
+
+    info = find_hotter_point(m)
+
+    print(info)
+
+    print(
+        f"Ponto mais quente esta eh: {m[info['l']][info['c']]}, e esta no sensor: {CONFIG['labels'][info['c']]}")
