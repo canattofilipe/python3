@@ -37,18 +37,20 @@ def load_labels(m):
                 config['labels'][j] = k
 
 
-def find_highest_point(m):
-    begin = config['start_datetime_index']
-    end = config['end_datetime_index']
+def find_hotspot(m, interval, mode=1):
     x_axis_len = config['x_axis_len']
 
-    v = float(m[begin][2].replace(',', '.'))
+    v = float(m[interval[0]][2].replace(',', '.'))
     tag = {'l': 0, 'c': 0}
 
-    for il, l in enumerate(m[begin:end+1], start=begin):
-        for ic, c in enumerate(l[2:x_axis_len-3], start=2):
+    for il, l in enumerate(m[interval[0]:interval[1]+1], start=interval[0]):
+        for ic, c in enumerate(l[2:x_axis_len-4], start=2):
             aux = float(c.replace(',', '.'))
-            if aux >= v:
+            if mode == 1 and aux >= v:
+                v = aux
+                tag['l'] = il
+                tag['c'] = ic
+            elif mode == 2 and aux <= v:
                 v = aux
                 tag['l'] = il
                 tag['c'] = ic
@@ -61,9 +63,10 @@ if __name__ == '__main__':
     config['end_datetime'] = '2020-02-21 13:49:31,663'
 
     config['start_datetime_index'] = y_axis['2020-02-21 13:41:31,610']
-    config['end_datetime_index'] = y_axis.get('2020-02-21 13:49:31,663')
+    config['end_datetime_index'] = y_axis['2020-02-21 13:49:31,663']
 
-    info = find_highest_point(m)
+    interval = (config['start_datetime_index'], config['end_datetime_index'])
+    info = find_hotspot(m, interval, 2)
 
     print(info)
 
