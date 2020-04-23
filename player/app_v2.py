@@ -1,59 +1,52 @@
 #!/usr/bin/python3
 import numpy as np
+import constants
 
-DELIMITER = ';'
-
-# Mapa que armazena o conteudo + indice da primeira coluna da matriz.
-FIRST_COLUMN_MAP = {}
-# Mapa que armazena as configuracoes.
-CONFIG = {'start_datetime': None, 'end_datetime': None,
-          'axys_x_len': None, 'labels': {}}
+y_axis = {}
+config = {'start_datetime': None, 'end_datetime': None,
+          'start_datetime_index': None, 'end_datetime_index': None,
+          'x_axis_len': None, 'labels': {}}
 
 
 def load():
     m = []
     with open('data/data.csv') as file:
-        for i, raw_row in enumerate(file):
+        for i, l in enumerate(file):
+            a = l.split(constants.DELIMITER)
             if len(m) == 0:
-                m = np.array([raw_row.split(DELIMITER)])
-                FIRST_COLUMN_MAP.update({raw_row.split(DELIMITER)[0]: i})
-                CONFIG['axys_x_len'] = len(raw_row.split(DELIMITER))
+                m = np.array([a])
                 continue
-            row = raw_row.split(DELIMITER)
-            FIRST_COLUMN_MAP.update({row[0]: i})
-            m = np.append(m, [row], 0)
-        load_labels(m)
+            m = np.append(m, [a], 0)
+        load_config(m)
         return m
 
 
-# Verifica se as informacoes de entrada sao validas.
-def check(m):
-    start_datetime, end_datetime = False, False
-    if FIRST_COLUMN_MAP[CONFIG['start_datetime']]:
-        start_datetime = True
-    if FIRST_COLUMN_MAP[CONFIG['end_datetime']]:
-        end_datetime = True
+def load_config(m):
+    load_labels(m)
 
-    return start_datetime and end_datetime
+    config['x_axis_len'] = len(m[0])
+
+    for i, a in enumerate(m):
+        y_axis.update({a[0]: i})
 
 
 def load_labels(m):
     for i in m:
-        if i[0] == 'Scan Sweep Time (Sec)':
+        if i[0] == constants.LABEL_COLUMN_HINT:
             for j, k in enumerate(i):
-                CONFIG['labels'][j] = k
+                config['labels'][j] = k
 
 
-def find_hotter_point(m):
-    begin = FIRST_COLUMN_MAP[CONFIG['start_datetime']]
-    end = FIRST_COLUMN_MAP[CONFIG['end_datetime']]
-    axys_x_len = CONFIG['axys_x_len']
+def find_highest_point(m):
+    begin = config['start_datetime_index']
+    end = config['end_datetime_index']
+    x_axis_len = config['x_axis_len']
 
     v = float(m[begin][2].replace(',', '.'))
     tag = {'l': 0, 'c': 0}
 
     for il, l in enumerate(m[begin:end+1], start=begin):
-        for ic, c in enumerate(l[2:axys_x_len-4], start=2):
+        for ic, c in enumerate(l[2:x_axis_len-3], start=2):
             aux = float(c.replace(',', '.'))
             if aux >= v:
                 v = aux
@@ -63,15 +56,16 @@ def find_hotter_point(m):
 
 
 if __name__ == '__main__':
-    CONFIG['start_datetime'] = '2020-02-21 13:41:31,610'
-    CONFIG['end_datetime'] = '2020-02-21 13:49:31,663'
     m = load()
+    config['start_datetime'] = '2020-02-21 13:41:31,610'
+    config['end_datetime'] = '2020-02-21 13:49:31,663'
 
-    check(m)
+    config['start_datetime_index'] = y_axis['2020-02-21 13:41:31,610']
+    config['end_datetime_index'] = y_axis.get('2020-02-21 13:49:31,663')
 
-    info = find_hotter_point(m)
+    info = find_highest_point(m)
 
     print(info)
 
     print(
-        f"Ponto mais quente esta eh: {m[info['l']][info['c']]}, e esta no sensor: {CONFIG['labels'][info['c']]}")
+        f"Ponto mais quente esta eh: {m[info['l']][info['c']]}, e esta no sensor: {config['labels'][info['c']]}")
