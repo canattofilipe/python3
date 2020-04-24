@@ -56,6 +56,25 @@ def find_hot_spots_in_interval(m, interval, mode=1):
     return tag
 
 
+def find_hot_spots_in_interval_for_each_sensor(m, interval, mode=1):
+
+    interval_from = interval[0]
+    interval_to = interval[1]
+
+    interval_sensor_from = config.sensors_range[0]
+    interval_sensor_to = config.sensors_range[1]
+
+    dici = {}
+
+    for i in range(interval_sensor_from, interval_sensor_to):
+        aux_lista = []
+        for j in (range(interval_from, interval_to+1)):
+            aux_lista.append(float(m[j][i].replace(',', '.')))
+        dici.update({labels[i]: aux_lista})
+
+    return dici
+
+
 if __name__ == '__main__':
     m = load()
     interval = (y_axis[input.datetime_inicio], y_axis[input.datetime_fim])
@@ -66,3 +85,5 @@ if __name__ == '__main__':
         f"ponto mais quente do periodo: {m[hotter_point_location['l']][hotter_point_location['r']]} | sensor: {labels[hotter_point_location['r']]} | horario: {m[hotter_point_location['l']][0]}")
     print(
         f"ponto mais frio do periodo: {m[colder_point_location['l']][colder_point_location['r']]} | sensor: {labels[colder_point_location['r']]} |  horario: {m[colder_point_location['l']][0]}")
+
+    x = find_hot_spots_in_interval_for_each_sensor(m, interval)
