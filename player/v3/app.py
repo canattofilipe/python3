@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-import numpy as np
+
 import config
 import input
 
@@ -12,11 +12,8 @@ def load():
     with open('data/data.csv', encoding='iso-8859-1') as file:
         for l in file:
             a = l.split(config.DELIMITER)
-            if len(m) == 0:
-                m = np.array([a])
-                continue
-            m = np.append(m, [a], 0)
-            load_config(m)
+            m.append(a)
+        load_config(m)
         return m
 
 
