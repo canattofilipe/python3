@@ -10,7 +10,7 @@ config = {'start_datetime': None, 'end_datetime': None,
 
 def load():
     m = []
-    with open('data/data.csv') as file:
+    with open('data/data.csv', encoding='iso-8859-1') as file:
         for i, l in enumerate(file):
             a = l.split(constants.DELIMITER)
             if len(m) == 0:
