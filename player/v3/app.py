@@ -2,6 +2,7 @@
 
 import config
 import input
+import exporter
 
 y_axis = {}
 labels = {}
@@ -87,3 +88,5 @@ if __name__ == '__main__':
         f"ponto mais frio do periodo: {m[colder_point_location['l']][colder_point_location['r']]} | sensor: {labels[colder_point_location['r']]} |  horario: {m[colder_point_location['l']][0]}")
 
     x = find_hot_spots_in_interval_for_each_sensor(m, interval)
+
+    exporter.export(x)
