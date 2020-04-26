@@ -1,78 +1,119 @@
-<table frame="vsides" rules="cols">
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #customers {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td,
+        #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table id="customers">
     <tr>
-        <th style="padding-left: 1em; padding-right: 1em; text-align: center">Sensor</th>
-        <th style="padding-left: 1em; padding-right: 1em; text-align: center">101 (°C)- S01</th>
-        <th style="padding-left: 1em; padding-right: 1em; text-align: center">102 (°C)- S02</th>
-        <th style="padding-left: 1em; padding-right: 1em; text-align: center">103 (°C)- S03</th>
-        <th style="padding-left: 1em; padding-right: 1em; text-align: center">104 (°C)- S04</th>
-        <th style="padding-left: 1em; padding-right: 1em; text-align: center">105 (°C)- S05</th>
-        <th style="padding-left: 1em; padding-right: 1em; text-align: center">106 (°C)- S06 DRENO</th>
-        <th style="padding-left: 1em; padding-right: 1em; text-align: center">107 (°C)- S07</th>
-        <th style="padding-left: 1em; padding-right: 1em; text-align: center">108 (°C)- S08</th>
-        <th style="padding-left: 1em; padding-right: 1em; text-align: center">109 (°C)- S09</th>
-        <th style="padding-left: 1em; padding-right: 1em; text-align: center">110 (°C)- S10</th>
-        <th style="padding-left: 1em; padding-right: 1em; text-align: center">111 (°C)- S11</th>
-        <th style="padding-left: 1em; padding-right: 1em; text-align: center">112 (°C)- S12</th>
-        <th style="padding-left: 1em; padding-right: 1em; text-align: center">113 (°C)- S13</th>
-        <th style="padding-left: 1em; padding-right: 1em; text-align: center">114 (°C)- S14</th>
-        <th style="padding-left: 1em; padding-right: 1em; text-align: center">115 (°C)- S15</th>
-        <th style="padding-left: 1em; padding-right: 1em; text-align: center">116 (°C)- S16</th>
+        <th>Sensor</th>
+        <th>101 (°C)- S01</th>
+        <th>102 (°C)- S02</th>
+        <th>103 (°C)- S03</th>
+        <th>104 (°C)- S04</th>
+        <th>105 (°C)- S05</th>
+        <th>106 (°C)- S06 DRENO</th>
+        <th>107 (°C)- S07</th>
+        <th>108 (°C)- S08</th>
+        <th>109 (°C)- S09</th>
+        <th>110 (°C)- S10</th>
+        <th>111 (°C)- S11</th>
+        <th>112 (°C)- S12</th>
+        <th>113 (°C)- S13</th>
+        <th>114 (°C)- S14</th>
+        <th>115 (°C)- S15</th>
+        <th>116 (°C)- S16</th>
     </tr>
     <tr>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">Minima</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">82,19</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">68,68</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">64,28</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">75,20</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">78,81</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">67,72</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">79,51</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">89,52</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">67,73</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">87,73</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">80,82</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">81,93</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">83,67</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">64,10</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">74,62</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">86,14</td>
+        <td>Minima</td>
+        <td>82,19</td>
+        <td>68,68</td>
+        <td>64,28</td>
+        <td>75,20</td>
+        <td>78,81</td>
+        <td>67,72</td>
+        <td>79,51</td>
+        <td>89,52</td>
+        <td>67,73</td>
+        <td>87,73</td>
+        <td>80,82</td>
+        <td>81,93</td>
+        <td>83,67</td>
+        <td>64,10</td>
+        <td>74,62</td>
+        <td>86,14</td>
     </tr>
     <tr>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">Máxima</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">108,81</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">104,23</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">102,73</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">102,83</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">106,23</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">104,83</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">106,31</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">110,94</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">103,65</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">107,77</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">106,40</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">102,92</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">107,45</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">102,79</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">105,34</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">109,29</td>
+        <td>Máxima</td>
+        <td>108,81</td>
+        <td>104,23</td>
+        <td>102,73</td>
+        <td>102,83</td>
+        <td>106,23</td>
+        <td>104,83</td>
+        <td>106,31</td>
+        <td>110,94</td>
+        <td>103,65</td>
+        <td>107,77</td>
+        <td>106,40</td>
+        <td>102,92</td>
+        <td>107,45</td>
+        <td>102,79</td>
+        <td>105,34</td>
+        <td>109,29</td>
     </tr>
     <tr>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">Média</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">100,56</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">94,27</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">92,77</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">94,92</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">97,26</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">93,50</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">97,78</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">103,90</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">94,06</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">101,73</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">98,09</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">96,15</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">100,35</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">93,25</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">95,97</td>
-        <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">101,11</td>
+        <td>Média</td>
+        <td>100,56</td>
+        <td>94,27</td>
+        <td>92,77</td>
+        <td>94,92</td>
+        <td>97,26</td>
+        <td>93,50</td>
+        <td>97,78</td>
+        <td>103,90</td>
+        <td>94,06</td>
+        <td>101,73</td>
+        <td>98,09</td>
+        <td>96,15</td>
+        <td>100,35</td>
+        <td>93,25</td>
+        <td>95,97</td>
+        <td>101,11</td>
     </tr>
 </table>
+
+</body>
+
+</html>
