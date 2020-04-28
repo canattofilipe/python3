@@ -65,13 +65,13 @@ def find_hot_spots_in_interval_for_each_sensor(m, interval, mode=1):
     interval_sensor_from = config.sensors_range[0]
     interval_sensor_to = config.sensors_range[1]
 
-    dici = {}
+    dici = []
 
     for i in range(interval_sensor_from, interval_sensor_to):
         aux_lista = []
         for j in (range(interval_from, interval_to+1)):
             aux_lista.append(float(m[j][i].replace(',', '.')))
-        dici.update({labels[i]: aux_lista})
+        dici.append(aux_lista)
 
     return dici
 
@@ -89,4 +89,6 @@ if __name__ == '__main__':
 
     x = find_hot_spots_in_interval_for_each_sensor(m, interval)
 
-    exporter.export(x)
+    exporter.export(x, labels)
+
+   
