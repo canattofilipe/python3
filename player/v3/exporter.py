@@ -6,16 +6,16 @@ import config
 import pdfkit
 
 
-def create_table(l, labels):
+def create_table(l, labels, s_index):
     x1 = PrettyTable()
     x1.add_column('Sensor', ['Minima', 'Máxima', 'Média'])
-    for i, value in enumerate(l, start=config.sensors_range[0]):
+    for i, value in enumerate(l, start=s_index):
         value_aux = sorted(value)
         min = "{:.2f}".format(value_aux[0]).replace('.', ',')
         max = "{:.2f}".format(value_aux[-1]).replace('.', ',')
         avg = sum(value)/len(value)
         avg = "{:.2f}".format(avg).replace('.', ',')
-        x1.add_column(labels[2], [min, max, avg])
+        x1.add_column(labels[i], [min, max, avg])
 
     return x1.get_html_string(attributes={"id": "customers"})
 
@@ -26,9 +26,12 @@ def export(l, labels):
 
     table = ''
 
+    inic = config.sensors_range[0]
+
     for i in chunks:
-        table = table + create_table(i, labels)
+        table = table + create_table(i, labels, inic)
         table = table+'<br>'
+        inic = inic + len(i)
 
     print(table)
 
