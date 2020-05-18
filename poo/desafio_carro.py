@@ -13,7 +13,7 @@ class Carro:
         self.velocidade_atual = nova if nova <= maxima else maxima
         return self.velocidade_atual
 
-    def freiar(self, delta):
+    def frear(self, delta):
         minima = 0
         nova = self.velocidade_atual - delta
         self.velocidade_atual = nova if nova >= minima else minima
