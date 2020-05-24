@@ -7,6 +7,9 @@ class Projeto:
         self.nome = nome
         self.tarefas = []
 
+    def __iter__(self):
+        return self.tarefas.__iter__()
+
     def add(self, descricao):
         self.tarefas.append(Tarefa(descricao))
 
@@ -40,7 +43,7 @@ def main():
     casa.add('Lavar Roupa')
 
     casa.procurar('Lavar Roupa').concluir()
-    for t in casa.tarefas:
+    for t in casa:
         print(f'- {t}')
 
     print(casa)
