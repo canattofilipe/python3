@@ -1,0 +1,2 @@
+e simples e curto criar novas listas/tuplas/mapas usando expressoes lambda
+
