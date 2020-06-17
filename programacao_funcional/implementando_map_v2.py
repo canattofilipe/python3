@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 
-# Implementação simplificada do map
+# Implementação simplificada do map.
 def mapear(funcao, lista):
     return (funcao(elemento) for elemento in lista)
 
