@@ -1,52 +1,36 @@
 #!/usr/bin/python3
+from functools import reduce
 
 
-def get_dividendo():
-    inic = 1
+def mdc(l):
+    div = 2
+    div_com = set()
+    aux = l
     while True:
-        inic += 1
-        yield inic
+        v = list(map(lambda e: int(e/div)
+                     if e % div == 0
+                     else e,
+                     aux))
 
+        if v == aux:
+            div += 1
+            continue
 
-def doIt(dividendo, divisor):
-    return int(dividendo/divisor) if dividendo % divisor == 0 else dividendo
+        if not any(aux[i] == v[i] for i in range(len(l))):
+            div_com.add(div)
 
+        aux = v
 
-def entra_na_conta(divs, divisor):
-    r = True
-    for x in divs:
-        if x % divisor != 0:
-            r = False
-            break
-    return r
-
-
-def mdc(dividendos):
-    print(dividendos)
-    div = get_dividendo()
-    r = dividendos
-    y = next(div)
-    ld = []
-    while True:
-        before = r
-        r = [doIt(x, y) for x in r]
-        if before != r:
-            print(r)
-            if entra_na_conta(before, y) is True:
-                ld.append(y)
-        else:
-            y = next(div)
-
-        dec = True
-        for x in r:
-            if x != 1:
-                dec = False
-
-        if dec is True:
+        if len(list(filter(lambda e: e == 1, aux))) == len(l):
             break
 
-    print(ld)
+    return reduce(lambda d, f: d * f, div_com, 1)
 
 
 if __name__ == '__main__':
-    print(mdc([6, 12, 15]))
+    print(mdc([21, 7]))
+    print(mdc([125, 40]))
+    print(mdc([9, 564, 66, 3]))
+    print(mdc([55, 22]))
+    print(mdc([15, 150]))
+    print(mdc([7, 9]))
