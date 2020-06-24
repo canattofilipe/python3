@@ -12,6 +12,8 @@ parametros = dict(
 )
 
 # Utilitario para ser usado com o bloco with
+
+
 @contextmanager
 def nova_conexao():
     conexao = connect(**parametros)
