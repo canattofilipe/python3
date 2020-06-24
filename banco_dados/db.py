@@ -8,10 +8,10 @@ parametros = dict(
     port=3306,
     user='root',
     passwd='cpqdcpqd',
-    databse='agenda'
+    database='agenda'
 )
 
-
+# Utilitario para ser usado com o bloco with
 @contextmanager
 def nova_conexao():
     conexao = connect(**parametros)
@@ -19,5 +19,6 @@ def nova_conexao():
         yield conexao
     # sera chamado quando o bloco with terminar
     finally:
+        print('finally...')
         if (conexao and conexao.is_connected()):
             conexao.close()
