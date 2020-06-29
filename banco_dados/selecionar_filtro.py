@@ -1,7 +1,6 @@
 #!python3
 
 from db import nova_conexao
-from mysql.connector import ProgrammingError
 
 sql = "SELECT * FROM contatos WHERE tel = '98765-4321'"
 
